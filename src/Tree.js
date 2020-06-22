@@ -71,19 +71,22 @@ export default class Tree extends React.Component {
 
     return (
       <AutoSizer disableWidth={Boolean(width)}>
-        {({height, width: autoWidth}) => (
-          <List
-            deferredMeasurementCache={this._cache}
-            ref={r => (this._list = r)}
-            height={height}
-            rowCount={this.getRowCount()}
-            rowHeight={this._cache.rowHeight}
-            rowRenderer={this.measureRowRenderer(nodes)}
-            width={width || autoWidth}
-            scrollToIndex={scrollToIndex}
-            scrollToAlignment={scrollToAlignment}
-          />
-        )}
+        {({height, width: autoWidth}) => {
+          console.log(height, autoWidth, this._cache);
+          return (
+            <List
+              deferredMeasurementCache={this._cache}
+              ref={r => (this._list = r)}
+              height={height}
+              rowCount={this.getRowCount()}
+              rowHeight={this._cache.rowHeight}
+              rowRenderer={this.measureRowRenderer(nodes)}
+              width={width || autoWidth}
+              scrollToIndex={scrollToIndex}
+              scrollToAlignment={scrollToAlignment}
+            />
+          );
+        }}
       </AutoSizer>
     );
   }
